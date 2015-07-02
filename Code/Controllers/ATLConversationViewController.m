@@ -1112,6 +1112,10 @@ static NSString *const ATLDefaultPushAlertText = @"sent you a message.";
 
 - (void)queryControllerDidChangeContent:(LYRQueryController *)queryController
 {
+    if (!self.collectionView) {
+        return;
+    }
+    
     if (self.conversationDataSource.isExpandingPaginationWindow) {
         self.showingMoreMessagesIndicator = [self.conversationDataSource moreMessagesAvailable];
         [self reloadCollectionViewAdjustingForContentHeightChange];
